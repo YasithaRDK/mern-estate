@@ -24,6 +24,9 @@ export const signup = async (req, res, next) => {
 
 export const signin = async (req, res, next) => {
   const { email, password } = req.body;
+  if (!email || !password) {
+    return next(errorHandler(400, "*All the fields are required"));
+  }
   try {
     const validUser = await User.findOne({ email });
     if (!validUser) {
@@ -38,7 +41,7 @@ export const signin = async (req, res, next) => {
     res
       .cookie("access_token", token, { httpOnly: true })
       .status(200)
-      .json({ rest });
+      .json(rest);
   } catch (error) {
     next(error);
   }
