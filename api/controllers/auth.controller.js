@@ -18,7 +18,13 @@ export const signup = async (req, res, next) => {
     await newUser.save();
     res.status(201).json("User created successfully");
   } catch (error) {
-    next(error);
+    if (error.code === 11000 && error.keyPattern.username) {
+      return next(errorHandler(400, "Username already exists"));
+    } else if (error.code === 11000 && error.keyPattern.email) {
+      return next(errorHandler(400, "Email already exists"));
+    } else {
+      next(error);
+    }
   }
 };
 
