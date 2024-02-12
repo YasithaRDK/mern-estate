@@ -15,8 +15,6 @@ import {
 } from "react-icons/fa";
 import Contact from "../components/Contact";
 
-// https://sabe.io/blog/javascript-format-numbers-commas#:~:text=The%20best%20way%20to%20format,format%20the%20number%20with%20commas.
-
 export default function Listing() {
   SwiperCore.use([Navigation]);
   const [listing, setListing] = useState(null);
@@ -48,7 +46,6 @@ export default function Listing() {
     };
     fetchListing();
   }, [params.listingId]);
-
   return (
     <main>
       {loading && <p className="text-2xl text-center my-7">Loading...</p>}
@@ -110,9 +107,9 @@ export default function Listing() {
                 </p>
               )}
             </div>
-            <p className="text-slate-800">
-              <span className="font-semibold text-black">Description - </span>
-              {listing.description}
+            <p className="flex flex-col gap-2 whitespace-pre-wrap text-slate-800">
+              <span className="font-semibold text-black">Description </span>
+              <span>{listing.description}</span>
             </p>
             <ul className="flex flex-wrap items-center gap-4 text-sm font-semibold text-green-900 sm:gap-6">
               <li className="flex items-center gap-1 whitespace-nowrap ">

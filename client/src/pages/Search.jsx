@@ -92,8 +92,7 @@ const Search = () => {
     ) {
       setSidebarData({
         ...sidebarData,
-        [e.target.id]:
-          e.target.checked || e.target.checked === "true" ? true : "false",
+        [e.target.id]: e.target.checked,
       });
     }
 
@@ -131,8 +130,6 @@ const Search = () => {
     }
     setListings([...listings, ...data]);
   };
-
-  console.log(sidebarData);
 
   return (
     <div className="flex flex-col md:flex-row">

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { MdLocationOn } from "react-icons/md";
 
-export default function ListingItems({ listing }) {
+const ListingItems = ({ listing }) => {
   return (
     <div className="bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full md:w-[280px]">
       <Link to={`/listing/${listing._id}`}>
@@ -27,7 +27,7 @@ export default function ListingItems({ listing }) {
             {listing.description}
           </p>
           <p className="mt-2 font-semibold text-slate-500 ">
-            $
+            RS{" "}
             {listing.offer
               ? listing.discountPrice.toLocaleString("en-US")
               : listing.regularPrice.toLocaleString("en-US")}
@@ -49,4 +49,6 @@ export default function ListingItems({ listing }) {
       </Link>
     </div>
   );
-}
+};
+
+export default ListingItems;
